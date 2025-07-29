@@ -1,1 +1,2 @@
-web: gunicorn CreditGrid.wsgi:application
+web: gunicorn wsgi:application
+
