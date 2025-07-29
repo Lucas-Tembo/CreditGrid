@@ -64,7 +64,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "creditgrid.wsgi.application"
+WSGI_APPLICATION = "CreditGrid.wsgi.application"
 
 # Database
 DATABASES = {
