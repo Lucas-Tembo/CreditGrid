@@ -1,0 +1,79 @@
+{% load custom_filters %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Transactions</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md mt-2 me-1">
+    <div class="container-xl">
+        <a href="Index.html"class="navbar-brand">
+             <img src="{% static 'logo.PNG'%}" alt="" class="img-fluid" style="width: 70px; height: 65px;">
+        </a>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" 
+        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+
+
+        <div class="collapse navbar-collapse justify-content-end align-content-center text-center"
+         id="main-nav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link  fw-bold" href="{% url 'homepage' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link  fw-bold" href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link  fw-bold" href="{% url 'analytics' %}">Analytics</a></li>
+                <li class="nav-item"><a class="nav-link  fw-bold" href="{% url 'profile' %}">Profile</a></li>
+                <li class="nav-item">
+                  <form action="/accounts/logout" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn fw-bold text-light" style="background-color: #0d3336; ">Sign Out</button>
+                  </form>
+                </li>
+            </ul>
+        </div>
+     </div>
+    </nav>
+<div class="container p-4">
+    <h3 class="fw-bold text-center">Active Loans</h3>
+    <div class="table-responsive" style="overflow-y: auto;">
+          <table class="table table-striped">
+            <thead class="table dark">
+              <tr>
+                <th>Borrower</th>
+                <th>Disbursed Amount</th>
+                <th>interest Rate</th>
+                <th>Interest</th>
+                <th>Amount Due</th>
+                <th>Due Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for borrower in clients %}
+               <tr onclick="window.location.href='{% url 'borrower_detail' borrower.id %}'" style="cursor: pointer;">
+                <td>{{ borrower.name}}</td>
+                <td>k{{ borrower.amount}}</td>
+                <td>{{ borrower.interest}}%</td>
+                <td>k{{ borrower.interest_amount}}</td>
+                <td>k{{ borrower.amount_due}}</td>
+                <td>{{ borrower.date}}</td>
+              </tr>
+              {% empty %}
+              <tr>
+            <td colspan="6">No active loans.</td>
+          </tr>
+        {% endfor %}
+            </tbody>
+          </table>
+        </div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>    
+</body>
+</html>

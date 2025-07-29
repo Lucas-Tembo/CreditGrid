@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+     <style>
+         body{
+            background-color:#FFFBEF;
+        }
+        section{
+            height: 100vh;
+        }
+        #rectangle{
+            height: 100vh;
+        }
+        #id_username{
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+         #id_password{
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+    
+     </style>
+</head>
+<body>
+<section>
+     <nav class="navbar navbar-expand-md">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" 
+                    aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse justify-content-end align-content-center text-center"
+                     id="main-nav">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'homepage'%}">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'services'%}">SERVICES</a></li>
+                            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'contact'%}">CONTACT US</a></li>
+                
+                        </ul>
+                    </div>
+                 </div>
+            </nav>
+     <div class="container">
+        <div class="row justify-content-center">
+            <div id="rectangle" class="col-7 cold-md-6 col-lg-3">
+              <a href="{% url 'homepage' %}">
+                <img src="{% static 'creditgridtext.PNG'%}" alt="" class="img-fluid">
+              </a>
+                <h1 class="text-center">Sign In</h1>
+                <div class=" mt-4 d-flex justify-content-center">
+                     <form action="/accounts/login" method="post" class="text-center">
+                        {% csrf_token %}
+                        {{form}}
+                        {% if request.GET.next %}
+                             <input type="hidden" name="next" value="{{ request.GET.next }}">
+                        {% endif %}
+                        <input type="submit" name="" id="" value="Login" class="btn btn-success">
+                     </form>
+                </div>
+                <p class="text-center mt-2">Don't have an account? <a href="{% url 'signup' %}" style="text-decoration: none;">Create account</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreditGrid</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body{
+            background-color:#FFFBEF;
+        }
+        section{
+            padding: 60px 0;
+        }
+         
+        .hidden{
+          opacity: 0;
+          transition: all 2s;
+        }
+        .show{
+          opacity: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <section class="pt-0">
+        <div class="container">
+            <nav class="navbar navbar-expand-md">
+                <div class="container">
+                    <a href="{% url 'homepage' %}"class="navbar-brand">
+                        <img src="{% static 'logo.PNG'%}" alt="" class="img-fluid" style="width: 80px; height: 75px;">
+                    </a>
+            
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" 
+                    aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+            
+            
+                    <div class="collapse navbar-collapse justify-content-end align-content-center text-center"
+                     id="main-nav">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'homepage' %}">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'services' %}">SERVICES</a></li>
+                            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'contact' %}">CONTACT US</a></li>
+                            <li class="nav-item"><a class="nav-link fw-bold" href=" {% url 'login'%}">SIGN IN</a></li>
+                        </ul>
+                    </div>
+                 </div>
+            </nav>
+            <div class="row justify-content-center ps-5 pe-5 pb-5 pt-3 d-none d-md-flex">
+                <div class="col-lg-6 col-md-7 mt-5 pe-0 ps-5 pt-4 hidden">
+                    <h1 class="" style="color: #0d3336;">Manage Your Loans, Organise Your Business.</h2>
+                    <h5 class=" pe-5" style="color: #0d3336;" >Track all your loans in one place with our powerful and easy to use managment software for lending businesses.</p>
+                    <a href="" class="btn text-light" style="background-color: #2b5b59;">Get started</a>
+                </div>
+                <div class="col-lg-4 col-md-8 mt-5 hidden">
+                <img src="{% static '1D06CA0E-3193-42AE-AAA1-7F064EB7F48B.PNG'%}" alt="" class="img-fluid pe-5">
+                </div>
+                
+            </div>
+            <div class="row justify-content-center ps-5 pe-5 pb-5 pt-3 d-md-none">
+                <div class="col-10 ms-4">
+                   <img src="{% static '1D06CA0E-3193-42AE-AAA1-7F064EB7F48B.PNG'%}" alt="" class="img-fluid hidden pe-4">
+                </div>
+                <div class="col-12 mt-3 pe-0 ps-5 pt-4 hidden">
+                    <h1 class="" style="color: #0d3336;">Manage Your Loans, Organise Your Business.</h2>
+                    <h5 class=" pe-5" style="color: #0d3336;" >Track all your loans in one place with our powerful and easy to use managment software for lending businesses.</p>
+                    <a href="{% url 'signup' %}" class="btn btn-lg text-light" style="background-color: #2b5b59;">Get started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-6 col-lg-3 mt-4 hidden">
+                    <div class="card border-0 p-3">
+                        <div class="text-center">
+                             <i class="bi bi-calendar2-check fs-1"></i>
+                        </div>
+                        <div >
+                            <p class="fw-bold text-center">Loan Tracking</p>
+                        </div>
+                        <p class="text-center px-3">Monitor and manage all loans to your clients with ease.</p>
+                    </div>
+                </div>
+                <div class="col-8 col-md-6 col-lg-3 mt-4 hidden">
+                    <div class="card border-0 p-3">
+                        <i class="bi bi-arrow-repeat text-center fs-1"></i>
+                        <p class="fw-bold text-center">Automated Updates</p>
+                        <p class="text-center px-3">Keep loan information accurate with automated updates.</p>
+                    </div>
+                </div>
+                <div class="col-8 col-md-6 col-lg-3 mt-4 hidden">
+                    <div class="card border-0 p-3">
+                        <i class="bi bi-shield-check text-center fs-1"></i>
+                        <p class="fw-bold text-center">Safe and Secure</p>
+                        <p class="text-center px-3">Protect your data with industry leading security features.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="pricing">
+        <div class="container">
+            <h2 class="text-center">Pricing Plans</h2>
+            <p class="text-muted text-center">CHoose the right plan for your business.</p>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-8 col-md-6 col-lg-3 mt-4 hidden">
+                    <div class="card border-0 text-center p-3">
+                        <h4>Basic</h4>
+                        <h2>$15<span class="fs-6 fw-normal">/month</span></h2>
+                        <p>Upto 1 user</p>
+                        <p>Standard loan tracking</p>
+                        <p>Email support</p>
+                        <div>
+                            <a href="" class="btn text-light mb-3" style="background-color: #2b5b59;">Get started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 col-md-6 col-lg-3 mt-4 hidden">
+                    <div class="card border-2 text-center p-5" style="background-color: #eaece3;">
+                        <h4>Premium</h4>
+                        <h2>$75<span class="fs-6 fw-normal">/month</span></h2>
+                        <p>Unlimited users</p>
+                        <p>Advanced loan managment</p>
+                        <p>Priority Support</p>
+                        <div>
+                            <a href="" class="btn text-light mb-3" style="background-color: #2b5b59;">Get started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 col-md-6 col-lg-3 mt-4 hidden">
+                    <div class="card border-0 text-center p-3">
+                        <h4>Business</h4>
+                        <h2>$45<span class="fs-6 fw-normal">/month</span></h2>
+                        <p>Upto 3 users</p>
+                        <p>Basic loan managment</p>
+                        <p>24/7 Support</p>
+                        <div>
+                            <a href="" class="btn text-light mb-3" style="background-color: #2b5b59;">Get started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="demo">
+        <div class="container">
+            <div class="row justify-content-center hidden">
+                <div class="col-6 ">
+                    <h2 class="ps-5 pe-3">Streamline your loan managment process</h2>
+                </div>
+                <div class="col-4 ps-4">
+                    <a href="" class="btn mb-2 text-light" style="background-color: #2b5b59;">Request a demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class=" text-center text-white mt-4 hidden" style="background-color:#2b5b59;">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="bi bi-instagram"></i></a>
+      
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="bi bi-facebook"></i></a>
+      
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="bi bi-tiktok"></i></a>
+      
+            <!-- twitter-->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="bi bi-twitter-x"></i></a>
+      
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="bi bi-linkedin"></i></a>
+      
+            <!-- whatsapp -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="bi bi-whatsapp"></i></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2025 Copyright:
+          <a class="text-white text-decoration-none" href="">StormTechnologies</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<script >
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    console.log(entry)
+    if (entry.isIntersecting){
+        entry.target.classList.add('show');
+    } else {
+        entry.target.classList.remove('show');
+    }
+  });
+});
+
+const hiddenElements = document.querySelectorAll('.hidden')
+hiddenElements.forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>

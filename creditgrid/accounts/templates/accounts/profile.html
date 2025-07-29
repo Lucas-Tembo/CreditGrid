@@ -1,0 +1,90 @@
+{% load custom_filters %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+     body{
+            background-color:#FFFBEF;
+        }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md mt-2 me-1">
+    <div class="container-xl">
+        <a href="{% url 'homepage' %}"class="navbar-brand">
+             <img src="{% static 'logo.PNG'%}" alt="" class="img-fluid" style="width: 70px; height: 65px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" 
+        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+
+
+        <div class="collapse navbar-collapse justify-content-end align-content-center text-center"
+         id="main-nav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link  fw-bold" href="{% url 'homepage' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link  fw-bold" href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link  fw-bold" href="{% url 'analytics' %}">Analytics</a></li>
+                <li class="nav-item"><a class="nav-link  fw-bold" href="{% url 'profile' %}">Profile</a></li>
+                <li class="nav-item">
+                  <form action="/accounts/logout" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn fw-bold text-light" style="background-color: #0d3336; ">Sign Out</button>
+                  </form>
+                </li>
+            </ul>
+        </div>
+     </div>
+    </nav>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-10 col-md-7 col-lg-5">
+        <!-- Card -->
+        <div class="card border">
+          <div class="card-header text-white" style="background-color: #0d3336;">
+            <h4 class="text-center">Your Profile</h4>
+          </div>
+
+          <div class="card-body">
+            <form method="post" enctype="multipart/form-data" class="text-center">
+              {% csrf_token %}
+
+              <!-- USER FORM -->
+              <h4 class="text-secondary mb-3">Account Information</h4>
+              {% for field in user_form %}
+                <div class="mb-2">
+                  <label class="form-label">{{ field.label }}</label> <br>
+                  {{ field }}
+                  {% if field.errors %}
+                    <div class="text-danger small">{{ field.errors }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+
+              <!-- PROFILE FORM -->
+              <h4 class="text-secondary mt-4 mb-3">Company Details</h4>
+              {% for field in profile_form %}
+                <div class="mb-2">
+                  <label class="form-label">{{ field.label }}</label> <br>
+                  {{ field }}
+                  {% if field.errors %}
+                    <div class="text-danger small">{{ field.errors }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-success">Save Changes</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
