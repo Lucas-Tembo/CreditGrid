@@ -2,6 +2,7 @@ services:
   - type: web
     name: creditgrid
     env: python
+    rootDir: core  # this points to the folder where manage.py lives
     buildCommand: |
       buildCommand: pip install -r requirements.txt
       python manage.py collectstatic --noinput
