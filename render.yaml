@@ -3,7 +3,7 @@ services:
     name: creditgrid
     env: python
     buildCommand: |
-      pip install -r requirements.txt
+      buildCommand: pip install -r ../requirements.txt
       python manage.py collectstatic --noinput
     startCommand: gunicorn core.wsgi:application
     envVars:
