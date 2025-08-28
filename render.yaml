@@ -2,11 +2,13 @@ services:
   - type: web
     name: creditgrid
     env: python
-    rootDir: core  # this points to the folder where manage.py lives
-    buildCommand: pip install -r ../requirements.txt
-    startCommand: gunicorn core.wsgi:application
+    rootDir: core   # outer core folder (where manage.py lives)
+    buildCommand: |
+      pip install -r ../requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn core.core.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: core.settings
+        value: core.core.settings
       - key: PYTHON_VERSION
         value: 3.11
