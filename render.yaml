@@ -2,7 +2,6 @@ services:
   - type: web
     name: creditgrid
     env: python
-    rootDir: core   # outer core folder (where manage.py lives)
     buildCommand: |
        buildCommand: "pip install -r core/requirements.txt"
     startCommand: "gunicorn core.wsgi:application --chdir core --bind 0.0.0.0:8000"
