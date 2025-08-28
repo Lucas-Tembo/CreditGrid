@@ -6,9 +6,9 @@ services:
     buildCommand: |
       pip install -r ../requirements.txt
       python manage.py collectstatic --noinput
-    startCommand: gunicorn creditgrid.core.wsgi:application
+    startCommand: gunicorn core.core.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: creditgrid.core.settings
+        value: core.core.settings
       - key: PYTHON_VERSION
         value: 3.11
